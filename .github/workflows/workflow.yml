@@ -29,5 +29,5 @@ jobs:
     - name: Upload to PyPI
       env:
         TWINE_USERNAME: "__token__"
-        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        TWINE_PASSWORD: "AgEIcHlwaS5vcmcCJDg5YzgwM2ZjLWY1YTktNDFjNy1hYjNkLWZhMzJjN2I2ODAyYgACKlszLCJkNTQ1MDcxNC1lYmQxLTQwM2YtYjA5OS1lZTY1ZDYwMjJhM2EiXQAABiDp0KnLCIIrRd_Fw3OMcq09hwetzZ4zAHkcrF7d_PrT5A"#${{ secrets.PYPI_API_TOKEN }}
       run: python -m twine upload --verbose dist/*.tar.gz dist/*.whl
