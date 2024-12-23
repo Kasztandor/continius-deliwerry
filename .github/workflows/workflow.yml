@@ -30,8 +30,4 @@ jobs:
       env:
         TWINE_USERNAME: "__token__"
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-      run: |
-        echo "Uploading to PyPI..."
-        echo ${{ secrets.PYPI_API_TOKEN }}
-        echo ${{ PYPI_API_TOKEN }}
-        python -m twine upload dist/*.tar.gz dist/*.whl
+      run: python -m twine upload dist/*.tar.gz dist/*.whl
