@@ -15,4 +15,4 @@ packages = ["dist"]
 include-package-data = true
 
 [tool.setuptools.package-data]
-"dist" = ["main.py"]
+"dist" = ["main.py", "README.md"]
