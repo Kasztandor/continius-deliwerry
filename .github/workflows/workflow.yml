@@ -2,8 +2,8 @@ name: Publish to PyPI
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "v*"  # Publikacja zostanie wywołana po utworzeniu tagu wersji, np. "v1.0.0".
 
 jobs:
   publish:
