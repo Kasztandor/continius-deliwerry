@@ -3,7 +3,7 @@ requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "attendance-manager"  # Zmienna nazwa projektu
+name = "attendance-manager"
 version = "0.1.0"
 description = "A Python application for managing attendance and student data."
 readme = "README.md"
@@ -11,14 +11,17 @@ license = {file = "LICENSE"}
 authors = [
     {name = "Your Name", email = "your.email@example.com"}
 ]
-dependencies = [
-    "pandas>=1.0",
-    "numpy"
-]
+
+# Tylko main.py ma być zbudowany w paczce
+packages = ["dist"]
+include-package-data = true
 
 [tool.setuptools]
-packages = ["dist"]
-include_package_data = true
+# Tu określamy pliki, które mają być uwzględnione w pakiecie
+package-data = { 
+    "": ["dist/main.py"],  # Tylko main.py
+}
 
-[tool.setuptools.package-data]
-"*": ["*.csv"]  # Przykładowe dane, jeśli potrzebujesz załączyć pliki CSV
+# Reszta plików nie będzie w paczce
+[tool.setuptools.exclude]
+# Możesz tu dodać inne pliki, które chcesz wykluczyć z pakietu
