@@ -2,8 +2,8 @@ name: Publish to PyPI
 
 on:
   push:
-    tags:
-      - "v*"  # Publikacja zostanie wywołana po utworzeniu tagu wersji, np. "v1.0.0".
+    branches:
+      - main  # Publikuj tylko po wypchnięciu do głównej gałęzi
 
 jobs:
   publish:
@@ -18,16 +18,11 @@ jobs:
       with:
         python-version: 3.9
 
-    - name: Install build dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install build twine
+    - name: Install Twine
+      run: python -m pip install --upgrade twine
 
-    - name: Build the package
-      run: python -m build
-
-    - name: Publish to PyPI
+    - name: Upload to PyPI
       env:
-        TWINE_USERNAME: __token__
+        TWINE_USERNAME: "__token__"
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
       run: python -m twine upload dist/*
